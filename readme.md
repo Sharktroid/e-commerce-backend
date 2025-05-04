@@ -1,0 +1,1 @@
+A partial fork of https://github.com/MohitSojitra/e-commerce-store
