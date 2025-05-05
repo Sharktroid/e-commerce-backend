@@ -4,7 +4,7 @@ const {
   signInUser,
   getUser,
 } = require('../controller/user.controller');
-const {verifyUser} = require('../middleware/middleware');
+const { verifyUser } = require('../middleware/middleware');
 const router = express.Router();
 
 router.post('/signup', signUpUser);

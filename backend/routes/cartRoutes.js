@@ -4,7 +4,7 @@ const {
   deleteProductInCart,
   getCartProducts,
 } = require('../controller/cart.controller');
-const {verifyUser} = require('../middleware/middleware');
+const { verifyUser } = require('../middleware/middleware');
 const router = express.Router();
 
 router
