@@ -19,11 +19,11 @@ const signUpUser = async (req, res) => {
 const signInUser = async (req, res) => {
   const { password } = req.body;
   const email = req.body.email.toString();
-  console.log(req.body);
   try {
     const user = await User.findOne({ email });
     if (!user) {
       sendResponseError(400, 'You have to Sign up first !', res)
+      return
     }
 
     const same = await checkPassword(password, user.password);

@@ -16,11 +16,20 @@ const addProductInCart = async (req, res) => {
   const productId = req.body.productId.toString();
   const count = req.body.count.toString();
   try {
-    const cart = await Cart.findOneAndUpdate(
+    let cart = await Cart.findOneAndUpdate(
       { productId },
       { productId, count, userId: req.user._id },
       { upsert: true },
     );
+
+    if (!cart) {
+      cart = await Cart.create({
+        productId,
+        count,
+        userId: req.user._id,
+      });
+      await cart.save();
+    }
 
     res.status(201).send({ status: 'ok', cart })
   } catch (err) {
